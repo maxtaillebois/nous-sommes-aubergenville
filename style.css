@@ -84,11 +84,13 @@ img {
 }
 
 .nav-logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 1.4rem;
-    color: white;
-    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo-img {
+    height: 40px;
+    width: auto;
 }
 
 .nav-menu {
