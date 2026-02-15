@@ -482,6 +482,13 @@ img {
 
 .contact-links {
     margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-links .btn {
+    max-width: 100%;
+    word-break: break-all;
 }
 
 .social-links {
