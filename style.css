@@ -557,36 +557,54 @@ img {
         font-size: 0.9rem;
     }
 
-    /* Hero mobile */
+    /* Hero mobile : photo toujours visible a gauche */
     .hero {
-        min-height: auto;
+        min-height: 70vh;
     }
 
     .hero-photo {
-        position: relative;
-        left: auto;
-        bottom: auto;
-        text-align: center;
-        padding: 2rem 2rem 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
     }
 
     .hero-photo img {
-        height: auto;
-        max-height: 40vh;
-        margin: 0 auto;
+        height: 55vh;
+        width: auto;
+        margin: 0;
     }
 
     .hero-content {
-        min-height: auto;
-        padding: 2rem;
+        min-height: 70vh;
+        padding: 1.5rem 1.5rem 1.5rem calc(28vw + 0.5rem);
+        align-items: flex-end;
+        text-align: right;
     }
 
     .hero-title {
-        font-size: 2.4rem;
+        font-size: 1.8rem;
     }
 
     .hero-date {
-        font-size: 0.8rem;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.85rem;
+        max-width: 100%;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-buttons {
+        justify-content: flex-end;
+    }
+
+    .hero-buttons .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.75rem;
     }
 
     /* Grids */
@@ -605,17 +623,37 @@ img {
 }
 
 @media (max-width: 480px) {
+    .hero-photo img {
+        height: 45vh;
+    }
+
+    .hero-content {
+        padding: 1rem 1rem 1rem calc(30vw + 0.5rem);
+    }
+
     .hero-title {
-        font-size: 1.9rem;
+        font-size: 1.5rem;
+    }
+
+    .hero-date {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.78rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
     }
 
     .hero-buttons {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
     }
 
-    .btn {
-        width: 100%;
+    .hero-buttons .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
         text-align: center;
     }
 }
