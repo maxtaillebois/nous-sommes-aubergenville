@@ -36,7 +36,7 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 // Observe cards and sections for animation
-document.querySelectorAll('.engagement-card, .section-card, .quartier-card, .programme-engagement').forEach(el => {
+document.querySelectorAll('.engagement-card, .accordion, .programme-engagement').forEach(el => {
     el.classList.add('fade-in');
     observer.observe(el);
 });
@@ -61,3 +61,68 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+// ===== CONTACT FORM VALIDATION & SUBMIT =====
+const contactForm = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
+const formSubmitBtn = document.getElementById('formSubmitBtn');
+
+if (contactForm) {
+    // Live validation: remove error state on input
+    contactForm.querySelectorAll('input, textarea').forEach(field => {
+        field.addEventListener('input', () => {
+            field.classList.remove('invalid');
+        });
+    });
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        let isValid = true;
+
+        // Validate required fields
+        contactForm.querySelectorAll('[required]').forEach(field => {
+            if (!field.value.trim()) {
+                field.classList.add('invalid');
+                isValid = false;
+            } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+                field.classList.add('invalid');
+                isValid = false;
+            } else {
+                field.classList.remove('invalid');
+            }
+        });
+
+        if (!isValid) return;
+
+        // Submit via Formspree
+        formSubmitBtn.disabled = true;
+        formSubmitBtn.textContent = 'Envoi en cours\u2026';
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                contactForm.reset();
+                formSuccess.style.display = 'block';
+                formSubmitBtn.textContent = 'Message envoy\u00e9';
+                setTimeout(() => {
+                    formSuccess.style.display = 'none';
+                    formSubmitBtn.disabled = false;
+                    formSubmitBtn.textContent = 'Envoyer le message';
+                }, 5000);
+            } else {
+                formSubmitBtn.disabled = false;
+                formSubmitBtn.textContent = 'Envoyer le message';
+                alert('Une erreur est survenue. Veuillez r\u00e9essayer.');
+            }
+        } catch (err) {
+            formSubmitBtn.disabled = false;
+            formSubmitBtn.textContent = 'Envoyer le message';
+            alert('Erreur de connexion. V\u00e9rifiez votre connexion internet.');
+        }
+    });
+}
