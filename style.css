@@ -484,6 +484,23 @@ img {
     color: var(--primary);
 }
 
+/* ===== PAR QUARTIERS ===== */
+.quartiers-section {
+    padding: 5rem 0;
+    background: var(--bg-light);
+}
+
+.quartiers-image {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.quartiers-image img {
+    max-width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
 /* ===== CONTACT ===== */
 .contact-section {
     padding: 5rem 0;
