@@ -361,10 +361,19 @@
     <div class="container">
         <h2 class="section-title">Notre programme par quartiers</h2>
         <div class="quartiers-image">
-            <img src="assets/programme_PlanVille.jpg" alt="Programme par quartiers - Carte d'Aubergenville">
+            <img src="assets/programme_PlanVille.jpg" alt="Programme par quartiers - Carte d'Aubergenville" id="planVilleImg" style="cursor:pointer;">
+            <p class="quartiers-hint">Cliquez sur la carte pour l'agrandir</p>
         </div>
     </div>
 </section>
+
+<!-- ===== MODAL PDF ===== -->
+<div class="modal-overlay" id="modalPlanVille">
+    <div class="modal-content">
+        <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+        <iframe src="assets/programme_PlanVille.pdf" title="Programme par quartiers"></iframe>
+    </div>
+</div>
 
 <!-- ===== CONTACT ===== -->
 <section class="contact-section" id="contact">

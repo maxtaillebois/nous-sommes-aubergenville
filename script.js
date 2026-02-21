@@ -62,6 +62,37 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// ===== MODAL PDF (Plan par quartiers) =====
+const planVilleImg = document.getElementById('planVilleImg');
+const modalPlanVille = document.getElementById('modalPlanVille');
+const modalClose = document.getElementById('modalClose');
+
+if (planVilleImg && modalPlanVille) {
+    planVilleImg.addEventListener('click', () => {
+        modalPlanVille.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    modalClose.addEventListener('click', () => {
+        modalPlanVille.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    modalPlanVille.addEventListener('click', (e) => {
+        if (e.target === modalPlanVille) {
+            modalPlanVille.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalPlanVille.classList.contains('active')) {
+            modalPlanVille.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
 // ===== CONTACT FORM VALIDATION & SUBMIT =====
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
